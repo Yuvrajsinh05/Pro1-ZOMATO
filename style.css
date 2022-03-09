@@ -55,7 +55,7 @@ header{
     margin-top: 30px;
     z-index: 100000000;
     visibility: hidden;
-    background-image: url(/imges/copun.jpg);
+    background-image: url(imges/copun.jpg);
     background-repeat: no-repeat;
 
 }
