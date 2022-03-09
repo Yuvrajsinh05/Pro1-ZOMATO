@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="logic.js"> -->
+</head>
+<style>
+    .mydark {
+        background-color: black;
+        color: white;
+    }
+
+    .logojs {
+        background-color: black;
+        color: wheat;
+    }
+
+    .zomojs {
+        color: black;
+     
+    }
+</style>
+<script>
+    function changeMode() {
+
+        var mydark = document.body;
+        mydark.classList.toggle('mydark')
+
+        var mylogo = document.getElementById("logo");
+        mylogo.classList.toggle('logojs')
+
+        var myzomo = document.getElementById("icon")[h1];
+        myzomo.classList.toggle('zomojs')
+    }
+
+    function lc(){
+    document.getElementById('cupn').style.visibility = 'visible'
+}
+
+    function closeCoupon(){
+    document.getElementById('cupn').style.visibility='hidden'
+}
+</script>
+
+<body>
+    <div>
+        <header>
+
+            <div id="icon">
+                <h1>ZOMATO</h1>
+
+            </div>
+
+            <div id="social">
+                <button onclick="changeMode()" style="height: 50px;width: 50px;">mode</button>
+                <a href=""><img src="./imges/fb.png" alt=""></a>
+                <a href=""><img src="./imges/yt.png" alt=""></a>
+                <a href=""><img src="./imges/instagram.png" alt=""></a>
+            </div>
+        </header>
+        <div id="search">
+            <div id="cupn">
+            <button onclick="closeCoupon()">&times;</button>
+            </div>
+            <span id="logo" class="logo">E!</span>
+            <div id="headsearch" class="headsearch">Find the Restaurants near you </div>
+            <div id="dropdown" class="dropdown">
+                <select>
+                    <option>---Select Your City---</option>
+                    <option>Ahemdabad</option>
+                    <option value="">vadodara</option>
+                    <option value="">surat</option>
+                    <option value="">rajkot</option>
+                </select>
+                <select id="rest">
+                    <option>---Select Your Restaurant---</option>
+                    <option>Ahemdabad</option>
+                    <option value="">vadodara</option>
+                    <option value="">surat</option>
+                    <option value="">rajkot</option>
+                </select>
+
+
+
+            </div>
+        </div>
+        <div id="quicksearch">
+            <div id="quise">
+                <h2 style="font-size: 50px;">Quick search</h2>
+                <h5>Discover Restaurants By Meal</h5>
+            </div>
+            <div id="cards">
+                <div class="cards">
+                    <div class="cardimg"><img src="./imges/01.jpg" alt=""></div>
+                    <div class="cardte">
+                        <h2>BreakFast</h2> <br>
+                        <h5>Enjoy Your <br> Breakfast Meal</h5>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="cardimg"><img src="./imges/02.jpg" alt=""></div>
+                    <div class="cardte">
+                        <h2>Nightlife</h2><br>
+                        <h5>Enjoy Your <br> Breakfast Meal</h5>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="cardimg"><img src="./imges/03.jpg" alt=""></div>
+                    <div class="cardte">
+                        <h2>Dinner</h2> <br>
+                        <h5>Enjoy Your <br> Breakfast Meal</h5>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="cardimg"><img src="./imges/04.jpg" alt=""></div>
+                    <div class="cardte">
+                        <h2>Drinks</h2> <br>
+                        <h5>Enjoy Your <br> Breakfast Meal</h5>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="cardimg"><img src="./imges/01.jpg" alt=""></div>
+                    <div class="cardte">
+                        <h2>BreakFast</h2> <br>
+                        <h5>Enjoy Your <br> Breakfast Meal</h5>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="cardimg"><img src="./imges/03.jpg" alt=""></div>
+                    <div class="cardte">
+                        <h2>Dinner</h2> <br>
+                        <h5>Enjoy Your <br> Breakfast Meal</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer"></div>
+            <div class="footer"></div>
+            <div class="footer"></div>
+        </footer>
+
+    </div>
+
+
+</body>
+<script>
+    window.onload=lc()
+</script>
+</html>

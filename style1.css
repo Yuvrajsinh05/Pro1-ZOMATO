@@ -1,0 +1,175 @@
+* {
+    margin: 0%;
+    
+}
+
+header {
+    height: 60px;
+    background-color: tomato;
+}
+
+#icon {
+    float: left;
+    color: white;
+    font-size: 25px;
+}
+
+#social {
+    /* border: 2px solid green; */
+    height: 70px;
+}
+
+.buto{
+    float:right;
+    margin-top:10px;
+    margin-right: 20px;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    border: 1px solid white;
+    height: 35px;
+    
+}
+/* 
+#social img {
+    height: 50px;
+    width: 50px;
+    float: right;
+    padding: 7px;
+
+} */
+
+#container {
+    /* border: 2px solid greenyellow; */
+    height: 2250px;
+    width: 80%;
+    margin: auto;
+}
+
+#menu {
+    height: 700px;
+    width: 25%;
+    float: left;
+    border: 2px solid black;
+    /* position: fixed; */
+
+}
+
+#brands {
+    width: 100%;
+    height: 275px;
+    /* border: 2px solid green; */
+}
+
+.brand {
+    width: 100%;
+    height: 50px;
+    /* border: 2px solid black; */
+    padding: 2px;
+}
+
+li{
+    list-style: none;
+}
+li a{
+    text-decoration: none;
+    color: black;
+}
+
+li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 150%;
+}
+.lis{
+    padding: 10px;
+    position: absolute;
+}
+#likesyou{
+    width: 100%;
+    /* border: 2px solid purple; */
+    height: 400px;
+}
+
+#happy li{
+    padding: 8px;
+}
+
+#food{
+    float: right;
+    width: 65%;
+    /* border: 2px solid palevioletred; */
+    margin-right: -60px;
+    height: 1000px;
+}
+.foodcard{
+    height: 300px;
+    margin-top: 10px;
+    width: 100%;
+    float: right;
+    /* border: 2px solid red; */
+    box-shadow: 4px 4px 4px 4px pink;
+    
+}
+
+.foodcard img{
+    width: 45%;
+    height: 100%;
+    
+    
+}
+.foodtext{
+    float: right;
+    width: 45%;
+    height: 100%;
+
+}
+
+h2 span{
+  font-size: 20px;
+  /* background-color: rgba(12, 107, 75, 0.671);   */
+  color: black;
+  border-radius: 5px;
+  }
+
+#det{
+    /* float: right; */
+    width: 90%;
+    height: 50px;
+    /* border: 2px solid black; */
+    margin-top: 2px;
+    padding: 5px;
+}
+.DDR{
+    background-color: yellowgreen;
+}
+.det img{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.tdet{
+    padding-top: 10px;
+    float:left;
+    background-color: white;
+    font-size: 10px;
+    text-align: center;
+}
+#special{
+    float: right;
+}
+.det{
+    padding: 2px;
+}
+footer{
+    background-color: black;
+    float: left;
+    width: 100%;
+    margin-bottom: 0%;
+    display: block;
+    height: 100px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    justify-content: center;
+}
