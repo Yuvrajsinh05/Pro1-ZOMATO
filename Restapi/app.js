@@ -37,6 +37,15 @@ app.get('/reasturant',(req,res)=>{
     })
 })
 
+// meals 
+app.get('/meals',(req,res)=>{
+    db.collection('meals').find().toArray((err,result)=>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+
 // Connection with db
 MongoClient.connect(mongoUrl, (err,client) => {
     if(err) console.log(`Error while connecting`,err);
