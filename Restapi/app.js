@@ -5,8 +5,8 @@ const MongoClient = mongo.MongoClient;
 const dotenv = require('dotenv');
 dotenv.config()
 let port = process.env.PORT || 8230;
-const mongoUrl = process.env.mongoUrl
-// const mongoUrl = "mongodb+srv://local:test12345@cluster0.f8vmc.mongodb.net/augintern?retryWrites=true&w=majority";
+const mongoUrl = process.env.mongoUrlLive
+// const mongoUrl = "mongodb+srv:Yuvrajsinh:zCz8XtVfmmTwqid7@zomatocluster.xmadf.mongodb.net/zomapi?retryWrites=true&w=majority";
 // const bodyParser = require('body-parser');
 // const cors = require('cors');
 // const token = "8fbf8tyyt87378";
