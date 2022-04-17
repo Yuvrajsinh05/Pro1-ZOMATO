@@ -30,16 +30,41 @@ app.get('/location',(req,res)=>{
 })
 
 // Reaturants
-app.get('/reasturant',(req,res)=>{
-    db.collection('zomato').find().toArray((err,result)=>{
+app.get('/restaurants/',(req,res) => {
+    // let id = req.params.id;
+    // let id  = req.query.id
+    // console.log(">>>id",id)
+    let query = {};
+    let stateId = Number(req.query.state_id)
+    let mealId = Number(req.query.meal_id)
+    if(stateId){
+        query = {state_id:stateId}
+    }else if(mealId){
+        query = {'mealTypes.mealtype_id':mealId}
+    }
+
+    db.collection('zomato').find(query).toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
 })
 
-// meals 
-app.get('/meals',(req,res)=>{
-    db.collection('meals').find().toArray((err,result)=>{
+//restaurantDetails
+app.get('/details/:id',(req,res) => {
+    //let restId = Number(req.params.id);
+    let restId = mongo.ObjectId(req.params.id)
+    db.collection('zomato').find({_id:restId}).toArray((err,result) => {
+        if(err) throw err;
+        res.send(result)
+    })
+})
+app.get('/menu',(req,res) => {
+    let query = {}
+    let restId = Number(req.query.restId)
+    if(restId){
+        query = {restaurant_id:restId}
+    }
+    db.collection('menu').find(query).toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
