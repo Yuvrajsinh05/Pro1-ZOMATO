@@ -43,7 +43,7 @@ header{
     background-color: white;
     border-radius: 150%;
     margin-top: 35px;
-    margin-left: 500px;
+    margin-left: 675px;
     padding-left: 52px;
     padding-top: 32px;
 }
@@ -61,7 +61,7 @@ header{
 }
 .dropdown{
     position: absolute;
-    margin-top: 270px;
+    margin-top: 285px;
     height: 40px;
     width: 50%;
     margin-left: 30%;
