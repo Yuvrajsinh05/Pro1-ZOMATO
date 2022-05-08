@@ -30,9 +30,18 @@
 
         var mylogo = document.getElementById("logo");
         mylogo.classList.toggle('logojs')
-
-        var myzomo = document.getElementById("icon")[h1];
-        myzomo.classList.toggle('zomojs')
+        
+        var dropdown = document.getElementById("rest1")
+        dropdown.classList.toggle('logojs')
+        
+        var dropdown1 = document.getElementById("rest")
+        dropdown1.classList.toggle('logojs')
+        
+        var head = document.getElementById("ico")
+        head.classList.toggle('zomojs')
+        
+        var heading = document.getElementById("headsearch")
+        heading.classList.toggle('zomojs')
     }
 
     function lc(){
@@ -49,7 +58,7 @@
         <header>
 
             <div id="icon">
-                <h1>ZOMATO</h1>
+                <h1 id="ico">ZOMATO</h1>
 
             </div>
 
@@ -65,16 +74,16 @@
             <button onclick="closeCoupon()">&times;</button>
             </div>
             <span id="logo" class="logo">E!</span>
-            <div id="headsearch" class="headsearch">Find the Restaurants near you </div>
+            <div id="headsearch">Find the Restaurants near you </div>
             <div id="dropdown" class="dropdown">
-                <select>
+                <select id="rest">
                     <option>---Select Your City---</option>
                     <option>Ahemdabad</option>
                     <option value="">vadodara</option>
                     <option value="">surat</option>
                     <option value="">rajkot</option>
                 </select>
-                <select id="rest">
+                <select id="rest1">
                     <option>---Select Your Restaurant---</option>
                     <option>Ahemdabad</option>
                     <option value="">vadodara</option>
