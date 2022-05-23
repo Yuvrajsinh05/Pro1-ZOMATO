@@ -28,3 +28,36 @@
  # menu on the basis of reasturant
  >>http://localhost:8230/menu?restId=2
 
+//page4 
+> Menu details of item selected
+(post) > localhost:8230/menuItem
+(body) > [1,4,7]
+> Place Order
+(post) > localhost:8230/placeOrder
+(body) > 
+  {
+        "name": "uvvv",
+        "email": "yuv554@gmail.com",
+        "adress": "cdce 15 sector",
+        "phone": 45554455,
+        "cost": 242,
+        "menuItem": [7, 1, 5],
+        "status": "pending"
+    }
+
+// page5
+> See all order place
+>> localhost:8230/viewOrder
+
+> Get Order on basis of emailId
+>> localhost:8230/viewOrder?email=yuv554@gmail.com
+
+//update order
+(put) localhost:8230/updateOrder/62514d42f5aec503b2e0f2a9
+(body) 
+{
+	"status":"In Transit",
+    "bankName":"Axis Bank"
+}
+
+
