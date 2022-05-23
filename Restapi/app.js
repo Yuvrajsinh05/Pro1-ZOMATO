@@ -25,17 +25,44 @@ app.get('/location',(req,res)=>{
 
 // reasturant
 
-app.get('/reasturant',(req,res)=>{
-    db.collection('reasturant').find().toArray((err,result)=>{
+app.get('/reasturant/',(req,res)=>{
+    // let id = req.params.id;
+    // let id = req.query.id;
+    // console.log(">>>",id )
+    let query= {}
+    let stateId =Number(req.query.state_id);
+    let mealId = Number(req.query.meal_id);
+    if(stateId){
+        query = {state_id:stateId }
+    }else if(mealId){
+        query = {'mealTypes.mealtype_id':mealId}
+    }
+    db.collection('reasturant').find(query).toArray((err,result)=>{
         if(err) throw err;
         res.send(result)
     })
 })
 
-// meal-Type
+// reasturant
 
-app.get('/mealType',(req,res)=>{
-    db.collection('meal_type').find().toArray((err,result)=>{
+app.get('/details/:id',(req,res)=>{
+    // let restId = Number(req.params.id)
+    let restId = mongo.ObjectId(req.params.id)
+    db.collection('reasturant').find({_id:restId}).toArray((err,result)=>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+
+// Menu 
+app.get('/menu',(req,res)=>{
+    let query = {}
+    let restId = Number(req.params.restId)
+    if(restId){
+        query={resturant_id:restId}
+    }
+    db.collection('meal_type').find(query).toArray((err,result)=>{
         if(err) throw err;
         res.send(result)
     })
