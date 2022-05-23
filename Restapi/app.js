@@ -55,18 +55,19 @@ app.get('/details/:id',(req,res)=>{
 })
 
 
-// Menu 
-app.get('/menu',(req,res)=>{
+//menu
+app.get('/menu',(req,res) => {
     let query = {}
-    let restId = Number(req.params.restId)
+    let restId = Number(req.query.restId)
     if(restId){
-        query={resturant_id:restId}
+        query = {restaurant_id:restId}
     }
-    db.collection('meal_type').find(query).toArray((err,result)=>{
+    db.collection('menu').find(query).toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
 })
+
 
 
 
