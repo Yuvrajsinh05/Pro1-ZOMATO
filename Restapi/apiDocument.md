@@ -25,3 +25,6 @@
  # Details of reasturants
  >> http://localhost:8230/details/6289d56e446b2f87c0756193
 
+ # menu on the basis of reasturant
+ >>http://localhost:8230/menu?restId=2
+
