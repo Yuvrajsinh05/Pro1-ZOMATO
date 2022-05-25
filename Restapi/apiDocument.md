@@ -4,11 +4,11 @@
 >>https://zomanode.herokuapp.com/location
 
 # List of reasturant
->>http://localhost:9705/reasturant
+>>http://localhost:9705/restaurants
 >>https://zomanode.herokuapp.com/reasturant
 
 # List of reasturant wrt city
->>http://localhost:9705/reasturant?state_id=4
+>>http://localhost:9705/restaurants?state_id=4
 >>https://zomanode.herokuapp.com/reasturant?state_id=4
 
 # list of type of mealType
@@ -16,7 +16,7 @@
 >>
 // Page 2
 # List of reasturant on basis of meal
->>http://localhost:9705/reasturant?meal_id=4
+>>http://localhost:9705/restaurants?meal_id=4
 >>https://zomanode.herokuapp.com/reasturant?meal_id=4
 
 # Filter on basis of cuisine
@@ -33,11 +33,12 @@
 
 // Page 3 
  # Details of reasturants
- >> http://localhost:9705/details/6289d56e446b2f87c0756193
- >>https://zomanode.herokuapp.com/details/6289d56e446b2f87c0756193
+ >>http://zomatoajulypi.herokuapp.com/details/1
+ >>http://localhost:9705/details/6289d56e446b2f87c0756193
+ 
 
  # menu on the basis of reasturant
- >>http://localhost:9705/menu?restId=2
+ >> http://localhost:9705/menu?restId=8
  >>https://zomanode.herokuapp.com/menu?restId=2
 
 //page4 

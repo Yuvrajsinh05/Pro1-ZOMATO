@@ -4,53 +4,51 @@ const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const dotenv = require('dotenv');
 dotenv.config()
-let port = process.env.PORT||8230;
-const mongoUrl = "mongodb+srv://test:LuzDCTZz0jNz5NQ2@cluster0.xfudk.mongodb.net/zomato?retryWrites=true&w=majority";
+let port = process.env.PORT || 8230;
+//const mongoUrl = "mongodb+srv://local:test12345@cluster0.f8vmc.mongodb.net/augintern?retryWrites=true&w=majority";
+const mongoUrl = process.env.mongoUrlLive;
 const bodyParser = require('body-parser');
 const cors = require('cors');
+// const token = "8fbf8tyyt87378";
 
 // middleware
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json())
 app.use(cors())
 
+
 app.get('/',(req,res) => {
     res.send("Welcome to Express")
 })
 
-// location
-app.get('/location',(req,res) => {
-    if(req.query.token === token){
-        db.collection('location').find().toArray((err,result) => {
-            if(err) throw err;
-            res.send(result)
-        })
-    }else{
-        res.send('Unauthorise')
-    }
-})
+// locations
 
-// reasturant
-
-app.get('/reasturant/',(req,res)=>{
-    // let id = req.params.id;
-    // let id = req.query.id;
-    // console.log(">>>",id )
-    let query= {}
-    let stateId =Number(req.query.state_id);
-    let mealId = Number(req.query.meal_id);
-    if(stateId){
-        query = {state_id:stateId }
-    }else if(mealId){
-        query = {'mealTypes.mealtype_id':mealId}
-    }
-    db.collection('reasturant').find(query).toArray((err,result)=>{
+app.get('/location',(req,res)=>{
+    db.collection('locations').find().toArray((err,result)=>{
         if(err) throw err;
         res.send(result)
     })
 })
 
-// filter 
+//restaurants
+app.get('/restaurants/',(req,res) => {
+    // let id = req.params.id;
+    // let id  = req.query.id
+    // console.log(">>>id",id)
+    let query = {};
+    let stateId = Number(req.query.state_id)
+    let mealId = Number(req.query.meal_id)
+    if(stateId){
+        query = {state_id:stateId}
+    }else if(mealId){
+        query = {'mealTypes.mealtype_id':mealId}
+    }
+
+    db.collection('reasturant').find(query).toArray((err,result) => {
+        if(err) throw err;
+        res.send(result)
+    })
+})
 
 app.get('/filters/:mealId',(req,res) => {
     let sort = {cost:1}
@@ -86,25 +84,25 @@ app.get('/filters/:mealId',(req,res) => {
     })
 })
 
-// reasturantDetails
-app.get('/details/:id',(req,res)=>{
-    // let restId = Number(req.params.id)
+//restaurantDetails
+app.get('/details/:id',(req,res) => {
+    //let restId = Number(req.params.id);
     let restId = mongo.ObjectId(req.params.id)
-    db.collection('reasturant').find({_id:restId}).toArray((err,result)=>{
+    db.collection('reasturant').find({_id:restId}).toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
 })
 
 
-//menu 
-app.get('/menu',(req,res ) => {
+//menu
+app.get('/menu',(req,res) => {
     let query = {}
     let restId = Number(req.query.restId)
     if(restId){
-        query={resturant_id:restId}
+        query = {restaurant_id:restId}
     }
-    db.collection('meal_type').find(query).toArray((err,result)=>{
+    db.collection('menu').find(query).toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
@@ -155,12 +153,15 @@ app.delete('/deleteOrders',(req,res)=>{
 
 //update orders
 app.put('/updateOrder/:id',(req,res) => {
-    let oId = mongo.ObjectId(req.params.id);
+    console.log(">>>id",req.params.id)
+    console.log(">>>id",req.body)
+    let oId = Number(req.params.id)
     db.collection('orders').updateOne(
-        {_id:oId},
+        {id:oId},
         {$set:{
             "status":req.body.status,
-            "bank_name":req.body.bankName
+            "bank_name":req.body.bank_name,
+            "date":req.body.date
         }},(err,result) => {
             if(err) throw err
             res.send(`Status Updated to ${req.body.status}`)
@@ -168,11 +169,10 @@ app.put('/updateOrder/:id',(req,res) => {
     )
 })
 
-
 // Connection with db
 MongoClient.connect(mongoUrl, (err,client) => {
-    if(err) console.log(`Error while connecting`,err);
-    db = client.db("zomato");
+    if(err) console.log(`Error while connecting`);
+    db = client.db('zomato');
     app.listen(port,() => {
         console.log(`Server is running on port ${port}`)
     })
