@@ -68,7 +68,7 @@
 >> localhost:9705/viewOrder?email=yuv554@gmail.com
 >>https://zapiii.herokuapp.com/viewOrder?email=yuv554@gmail.com
 
-//update order
+## update order
 (put) localhost:9705/updateOrder/62514d42f5aec503b2e0f2a9
 (body) 
 {
