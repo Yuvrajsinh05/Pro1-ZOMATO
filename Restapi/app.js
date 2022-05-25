@@ -4,7 +4,7 @@ const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const dotenv = require('dotenv');
 dotenv.config()
-let port = process.env.mongo || 8230;
+let port = process.env.PORT||8230;
 const mongoUrl = "mongodb+srv://test:LuzDCTZz0jNz5NQ2@cluster0.xfudk.mongodb.net/zomato?retryWrites=true&w=majority";
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -19,12 +19,15 @@ app.get('/',(req,res) => {
 })
 
 // location
-
-app.get('/location',(req,res)=>{
-    db.collection('locations').find().toArray((err,result)=>{
-        if(err) throw err;
-        res.send(result)
-    })
+app.get('/location',(req,res) => {
+    if(req.query.token === token){
+        db.collection('location').find().toArray((err,result) => {
+            if(err) throw err;
+            res.send(result)
+        })
+    }else{
+        res.send('Unauthorise')
+    }
 })
 
 // reasturant
@@ -42,6 +45,42 @@ app.get('/reasturant/',(req,res)=>{
         query = {'mealTypes.mealtype_id':mealId}
     }
     db.collection('reasturant').find(query).toArray((err,result)=>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+// filter 
+
+app.get('/filters/:mealId',(req,res) => {
+    let sort = {cost:1}
+    let mealId = Number(req.params.mealId)
+    let cuisineId = Number(req.query.cuisineId)
+    let lcost = Number(req.query.lcost)
+    let hcost = Number(req.query.hcost)
+
+    let query = {}
+    if(req.query.sort){
+        sort={cost:Number(req.query.sort)}
+    }
+    if(cuisineId){
+        query = {
+            "mealTypes.mealtype_id":mealId,
+            "cuisines.cuisine_id":cuisineId
+        }
+    }else if(lcost && hcost){
+        query = {
+            "mealTypes.mealtype_id":mealId,
+            $and:[{cost:{$gt:lcost,$lt:hcost}}]
+        }
+    }
+    else{
+        query = {
+            "mealTypes.mealtype_id":mealId
+        }
+    }
+
+    db.collection('reasturant').find(query).sort(sort).toArray((err,result) => {
         if(err) throw err;
         res.send(result)
     })
